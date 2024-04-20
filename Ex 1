@@ -1,0 +1,24 @@
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = Encoding.UTF8;
+
+        Console.Write("Рядок:");
+        string str = Console.ReadLine();
+
+        Console.Write("Позиція:");
+        int Position = int.Parse(Console.ReadLine());
+
+        string partBefore = str.Substring(0, Position);
+        string partAfter = str.Substring(Position);
+
+        partAfter = partAfter.Replace("0", "x");
+        partAfter = partAfter.Replace("1", "0");
+        partAfter = partAfter.Replace("x", "1");
+
+        Console.WriteLine("Результат:" + partBefore + partAfter);
+    }
+}
