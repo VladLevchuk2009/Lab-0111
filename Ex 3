@@ -1,0 +1,37 @@
+using System.Text;
+
+class Program {
+    static void Main() {
+        Console.OutputEncoding = Encoding.UTF8;
+        
+        string str = "12.04.2020, 25.03.2023, 10.09.2021";
+
+        string[] arr = str.Split(',');
+
+        List<DateTime> dates = new List<DateTime>();
+
+        foreach (var a in arr) {
+            a.Trim();
+            string[] component = a.Split('.');
+            dates.Add(new DateTime(int.Parse(component[2]), int.Parse(component[1]), int.Parse(component[0])));
+        }
+
+        int minYear = dates[0].Year;
+        foreach (var date in dates) {
+            if (date.Year < minYear) {
+                minYear = date.Year;
+            }
+        }
+
+        Console.WriteLine($"Рік з найменшим номером: {minYear}");
+
+        Console.WriteLine("Весняні дати:");
+        foreach (var date in dates) {
+            if (date.Month >= 3 && date.Month <= 5) {
+                Console.WriteLine(date.ToString("dd.MM.yyyy"));
+            }
+        }
+
+        Console.WriteLine($"Сама пізня дата: {dates.Max().ToString("dd.MM.yyyy")}");
+    }
+}
