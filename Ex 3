@@ -22,14 +22,13 @@ class Program {
                 minYear = date.Year;
             }
         }
-
         Console.WriteLine($"Рік з найменшим номером: {minYear}");
 
+        var springDates = dates.Where(date => date.Month >= 3 && date.Month <= 5);
         Console.WriteLine("Весняні дати:");
-        foreach (var date in dates) {
-            if (date.Month >= 3 && date.Month <= 5) {
-                Console.WriteLine(date.ToString("dd.MM.yyyy"));
-            }
+        foreach (var date in springDates)
+        {
+            Console.WriteLine(date.ToString("dd.MM.yyyy"));
         }
 
         Console.WriteLine($"Сама пізня дата: {dates.Max().ToString("dd.MM.yyyy")}");
