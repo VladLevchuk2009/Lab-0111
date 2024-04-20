@@ -1,0 +1,30 @@
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = Encoding.UTF8;
+
+        Console.Write("Дата:");
+        string str = Console.ReadLine();
+
+        DateTime Date;
+        DateTime.TryParse(str, out Date);
+
+        TimeSpan difference = Date - DateTime.Today;
+
+        if ((int)difference.TotalDays > 0)
+        {
+            Console.WriteLine($"Залишилося {difference.TotalDays} днів");
+        }
+        else if ((int)difference.TotalDays == 0)
+        {
+            Console.WriteLine($"Сьогодні {Date.ToShortDateString()}");
+        }
+        else
+        {
+            Console.WriteLine($"Вже минув {Math.Abs((int)difference.TotalDays)} день з {Date.ToShortDateString()}");
+        }
+    }
+}
